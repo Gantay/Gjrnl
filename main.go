@@ -4,46 +4,52 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"time"
 )
 
 func main() {
-	// Prompt the user for input
-	fmt.Print("Enter some text: \n")
+	//create an empty slice to store inputs
+	var inputs []string
+	var now = time.Now()
 
 	// Create a bufio scanner to read user input
 	scanner := bufio.NewScanner(os.Stdin)
 
-	if scanner.Scan() {
-		userInput := scanner.Text() + "\n"
+	// Prompt the user for input
+	fmt.Println("Enter multiple lines of input (press Ctrl+D when finished):")
 
-		// Prompt the user for the file name
-		//fmt.Print("Enter the file name: ")
-		var fileName = "test"
-		//fmt.Scanln(&fileName)
+	for scanner.Scan() {
+		line := scanner.Text()
+		inputs = append(inputs, line)
+	}
 
-		// Open the file for writing
-		file, err := os.OpenFile("test", os.O_APPEND|os.O_RDWR|os.O_CREATE, 0755)
-		if err != nil {
-			fmt.Printf("Error opening the file: %v\n", err)
-			return
-		}
-		defer file.Close()
+	if err := scanner.Err(); err != nil {
+		fmt.Fprintln(os.Stderr, "Error:", err)
+		return
+	}
 
-		// Write the user input to the file
-		_, err = file.WriteString(userInput)
+	var note = "test.txt"
+	// Open the file for writing
+	Gjrnl, err := os.OpenFile(note, os.O_APPEND|os.O_RDWR|os.O_CREATE, 0755)
+	if err != nil {
+		fmt.Printf("Error opening the file: %v\n", err)
+		return
+	}
+
+	// Write the user input to the file
+
+	for _, k := range inputs {
+		_, err = Gjrnl.WriteString(k + "\n")
 		if err != nil {
 			fmt.Printf("Error writing to the file: %v\n", err)
 			return
 		}
-
-		fmt.Printf("User input has been written to %s\n", fileName)
-	} else {
-		fmt.Println("Failed to read user input.")
 	}
-}
+	t := now.Format(time.UnixDate) //Append time
+	_, err = Gjrnl.WriteString(t + "\n")
+	if err != nil {
+		fmt.Printf("Error writing timeStamp: %v\n", err)
+	}
 
-// You can also use the `Write` function to write a byte slice:
-// _, err = file.Write([]byte(newText))
-// if err != nil {
-//     log.Fatal(err)
-// }
+	defer Gjrnl.Close()
+}
