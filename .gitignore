@@ -1,3 +1,4 @@
-test.txt
+*.txt
 Gjrnl.code-workspace
 LICENSE
+*.json

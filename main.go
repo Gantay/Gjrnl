@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"encoding/json"
 	"fmt"
 	"os"
 	"time"
@@ -28,7 +29,16 @@ func main() {
 		return
 	}
 
-	var note = "test.txt"
+	//Read config file
+	conf, err := os.ReadFile("conf.json")
+	if err != nil {
+		fmt.Printf("Error reading config file: %v\n", err)
+	}
+	//Converting JSON
+	var data map[string]interface{}
+	json.Unmarshal([]byte(conf), &data)
+
+	var note = data["name_Gjrnl"].(string)
 	// Open the file for writing
 	Gjrnl, err := os.OpenFile(note, os.O_APPEND|os.O_RDWR|os.O_CREATE, 0755)
 	if err != nil {
@@ -45,11 +55,13 @@ func main() {
 			return
 		}
 	}
-	t := now.Format(time.UnixDate) //Append time
+	//Append time
+	t := now.Format(time.ANSIC)
 	_, err = Gjrnl.WriteString(t + "\n")
 	if err != nil {
 		fmt.Printf("Error writing timeStamp: %v\n", err)
 	}
 
 	defer Gjrnl.Close()
+
 }
