@@ -11,6 +11,7 @@ import (
 func main() {
 	//create an empty slice to store inputs
 	var inputs []string
+
 	var now = time.Now()
 
 	// Create a bufio scanner to read user input
@@ -19,11 +20,11 @@ func main() {
 	// Prompt the user for input
 	fmt.Println("Enter multiple lines of input (press Ctrl+D when finished):")
 
+	//Read user input
 	for scanner.Scan() {
 		line := scanner.Text()
 		inputs = append(inputs, line)
 	}
-
 	if err := scanner.Err(); err != nil {
 		fmt.Fprintln(os.Stderr, "Error:", err)
 		return
