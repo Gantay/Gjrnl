@@ -1,67 +1,62 @@
 package main
 
-import (
-	"bufio"
-	"fmt"
-	"os"
-	"time"
-)
-
 func main() {
-	//create an empty slice to store inputs
-	var inputs []string
 
-	var now = time.Now()
+	// //create an empty slice to store inputs
+	// var userInputs []string
 
-	// Create a bufio scanner to read user input
-	scanner := bufio.NewScanner(os.Stdin)
+	// //var now = time.Now()
 
-	// Prompt the user for input
-	fmt.Println("Enter multiple lines of input (press Ctrl+D when finished):")
+	// // Create a bufio scanner to read user input
+	// scanner := bufio.NewScanner(os.Stdin)
 
-	//Read user input
-	for scanner.Scan() {
-		line := scanner.Text()
-		inputs = append(inputs, line)
-	}
-	if err := scanner.Err(); err != nil {
-		fmt.Fprintln(os.Stderr, "Error:", err)
-		return
-	}
+	// // Prompt the user for input
+	// fmt.Println("Enter multiple lines of input (press Ctrl+D when finished):")
 
-	// //Read config file
-	// conf, err := os.ReadFile("conf.json")
-	// if err != nil {
-	// 	fmt.Printf("Error reading config file: %v\n", err)
+	// //Read user input
+	// for scanner.Scan() {
+	// 	intrary := scanner.Text()
+	// 	userInputs = append(userInputs, intrary)
 	// }
-	// //Converting JSON
-	// var data map[string]interface{}
-	// json.Unmarshal([]byte(conf), &data)
-	// var note = data["name_Gjrnl"].(string)
+	// if err := scanner.Err(); err != nil {
+	// 	fmt.Fprintln(os.Stderr, "Error:", err)
+	// 	return
+	// }
 
-	// Open the file for writing
-	Gjrnl, err := os.OpenFile("note", os.O_APPEND|os.O_RDWR|os.O_CREATE, 0755)
-	if err != nil {
-		fmt.Printf("Error opening the file: %v\n", err)
-		return
-	}
+	// // //Read config file
+	// // conf, err := os.ReadFile("conf.json")
+	// // if err != nil {
+	// // 	fmt.Printf("Error reading config file: %v\n", err)
+	// // }
+	// // //Converting JSON
+	// // var data map[string]interface{}
+	// // json.Unmarshal([]byte(conf), &data)
+	// // var note = data["name_Gjrnl"].(string)
 
-	// Write the user input to the file
-	for _, k := range inputs {
-		_, err = Gjrnl.WriteString(k + "\n")
-		if err != nil {
-			fmt.Printf("Error writing to the file: %v\n", err)
-			return
-		}
-	}
+	// // Open the file for writing
+	// jrnl, err := os.OpenFile("note", os.O_APPEND|os.O_RDWR|os.O_CREATE, 0700)
+	// if err != nil {
+	// 	fmt.Printf("Error opening the file: %v\n", err)
+	// 	return
+	// }
 
-	//Append time
-	t := now.Format(time.ANSIC)
-	_, err = Gjrnl.WriteString(t + "\n")
-	if err != nil {
-		fmt.Printf("Error writing timeStamp: %v\n", err)
-	}
+	// // Write the user input to the file
+	// for _, k := range userInputs {
 
-	defer Gjrnl.Close()
+	// 	_, err = jrnl.WriteString(k + "\n")
+	// 	if err != nil {
+	// 		fmt.Printf("Error writing to the file: %v\n", err)
+	// 		return
+	// 	}
+	// }
+
+	// // //Append time
+	// // t := now.Format(time.ANSIC)
+	// // _, err = jrnl.WriteString(t + "\n")
+	// // if err != nil {
+	// // 	fmt.Printf("Error writing timeStamp: %v\n", err)
+	// // }
+
+	// // defer Gjrnl.Close()
 
 }

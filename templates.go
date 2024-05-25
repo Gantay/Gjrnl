@@ -8,7 +8,7 @@ type FormFormat struct {
 	Date    time.Time
 }
 
-func jrnalForm(title string, intrary string) FormFormat {
+func JrnalForm(title string, intrary string) FormFormat {
 	I := FormFormat{
 		Title:   title,
 		Intrary: intrary,
