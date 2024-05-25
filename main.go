@@ -2,7 +2,6 @@ package main
 
 import (
 	"bufio"
-	"encoding/json"
 	"fmt"
 	"os"
 	"time"
@@ -30,25 +29,24 @@ func main() {
 		return
 	}
 
-	//Read config file
-	conf, err := os.ReadFile("conf.json")
-	if err != nil {
-		fmt.Printf("Error reading config file: %v\n", err)
-	}
-	//Converting JSON
-	var data map[string]interface{}
-	json.Unmarshal([]byte(conf), &data)
+	// //Read config file
+	// conf, err := os.ReadFile("conf.json")
+	// if err != nil {
+	// 	fmt.Printf("Error reading config file: %v\n", err)
+	// }
+	// //Converting JSON
+	// var data map[string]interface{}
+	// json.Unmarshal([]byte(conf), &data)
+	// var note = data["name_Gjrnl"].(string)
 
-	var note = data["name_Gjrnl"].(string)
 	// Open the file for writing
-	Gjrnl, err := os.OpenFile(note, os.O_APPEND|os.O_RDWR|os.O_CREATE, 0755)
+	Gjrnl, err := os.OpenFile("note", os.O_APPEND|os.O_RDWR|os.O_CREATE, 0755)
 	if err != nil {
 		fmt.Printf("Error opening the file: %v\n", err)
 		return
 	}
 
 	// Write the user input to the file
-
 	for _, k := range inputs {
 		_, err = Gjrnl.WriteString(k + "\n")
 		if err != nil {
@@ -56,6 +54,7 @@ func main() {
 			return
 		}
 	}
+
 	//Append time
 	t := now.Format(time.ANSIC)
 	_, err = Gjrnl.WriteString(t + "\n")

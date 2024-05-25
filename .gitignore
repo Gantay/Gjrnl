@@ -1,3 +1,6 @@
 Gjrnl.code-workspace
 *.txt
 *.json
+bin/
+conf.json
+note
