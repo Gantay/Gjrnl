@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func main() {
 
 	// //create an empty slice to store inputs
@@ -11,7 +13,9 @@ func main() {
 	// scanner := bufio.NewScanner(os.Stdin)
 
 	// // Prompt the user for input
-	// fmt.Println("Enter multiple lines of input (press Ctrl+D when finished):")
+	//fmt.Println("Enter multiple lines of input (press Ctrl+D when finished):")
+	fmt.Println("started")
+	input()
 
 	// //Read user input
 	// for scanner.Scan() {

@@ -1,17 +1,28 @@
 package main
 
-import "time"
+import (
+	"fmt"
+)
 
 type FormFormat struct {
-	Title   string
-	Intrary string
-	Date    time.Time
+	Intrary []string
 }
 
-func JrnalForm(title string, intrary string) FormFormat {
+func JrnalForm(title string, intrary []string) FormFormat {
 	I := FormFormat{
-		Title:   title,
+
 		Intrary: intrary,
 	}
+
+	fmt.Println(I)
 	return I
+}
+
+func (i FormFormat) format() (title []string, body []string) {
+
+	title = i.Intrary[:1]
+	body = i.Intrary[1:]
+
+	return title, body
+
 }
