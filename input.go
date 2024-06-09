@@ -39,7 +39,7 @@ func write(k Readeyto) {
 		fmt.Printf("Error opening the file: %v\n", err)
 		return
 	}
-
+	//
 	// Write the user input to the file
 	_, err = jrnl.WriteString(string(k.format()))
 	if err != nil {
