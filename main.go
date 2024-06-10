@@ -1,8 +1,6 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
 
@@ -16,8 +14,10 @@ func main() {
 
 	// // Prompt the user for input
 	//fmt.Println("Enter multiple lines of input (press Ctrl+D when finished):")
+
 	fmt.Println("started")
-	input()
+	//input()
+	write()
 
 	// //Read user input
 	// for scanner.Scan() {

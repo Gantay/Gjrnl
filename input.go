@@ -26,25 +26,3 @@ func input() (userInputs FormFormat) {
 	fmt.Println(userInputs.format())
 	return userInputs
 }
-
-type Readeyto interface {
-	format() []string
-}
-
-func write(k Readeyto) {
-
-	// Open the file for writing
-	jrnl, err := os.OpenFile("note", os.O_APPEND|os.O_RDWR|os.O_CREATE, 0700)
-	if err != nil {
-		fmt.Printf("Error opening the file: %v\n", err)
-		return
-	}
-	//
-	// Write the user input to the file
-	_, err = jrnl.WriteString(string(k.format()))
-	if err != nil {
-		fmt.Printf("Error writing to the file: %v\n", err)
-		return
-	}
-
-}
