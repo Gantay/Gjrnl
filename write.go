@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"time"
 )
 
 func write() {
@@ -35,12 +36,13 @@ func write() {
 		}
 	}
 
-	//Append time
-	// t := now.Format(time.ANSIC)
-	// _, err = jrnl.WriteString(t + "\n")
-	// if err != nil {
-	// 	fmt.Printf("Error writing timeStamp: %v\n", err)
-	// }
+	// Append time
+	var now = time.Now()
+	t := now.Format(time.ANSIC)
+	_, err = jrnl.WriteString(t + "\n")
+	if err != nil {
+		fmt.Printf("Error writing timeStamp: %v\n", err)
+	}
 
 	defer jrnl.Close()
 

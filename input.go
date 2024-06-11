@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+
 	"os"
 )
 
@@ -24,5 +25,18 @@ func input() (userInputs FormFormat) {
 
 	}
 	fmt.Println(userInputs.format())
+	write()
 	return userInputs
+
+}
+
+func banner() {
+	asciiLogo := `
+  ____      _     _     
+ / ___|__ _| |__ | |__  
+| |  _ / _' | '_ \| '_ \ 
+| |_| | (_| | | | | | | |
+ \____|\__,_|_| |_|_| |_|
+`
+	fmt.Println(asciiLogo)
 }

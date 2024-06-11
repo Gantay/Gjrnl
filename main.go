@@ -15,9 +15,9 @@ func main() {
 	// // Prompt the user for input
 	//fmt.Println("Enter multiple lines of input (press Ctrl+D when finished):")
 
-	fmt.Println("started")
-	//input()
-	write()
+	fmt.Println("Cli started")
+	banner()
+	input()
 
 	// //Read user input
 	// for scanner.Scan() {
