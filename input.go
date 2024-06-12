@@ -27,7 +27,6 @@ func input() (userInputs FormFormat) {
 	fmt.Println(userInputs.format())
 	write()
 	return userInputs
-
 }
 
 func banner() {
