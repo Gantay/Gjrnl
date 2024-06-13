@@ -9,7 +9,7 @@ import (
 
 func input() (userInputs FormFormat) {
 
-	// Create a bufio scanner to read user input
+	// Create a bufio scanner to read user input.
 	scanner := bufio.NewScanner(os.Stdin)
 
 	fmt.Println("Enter multiple lines of input (press Ctrl+D when finished):")
