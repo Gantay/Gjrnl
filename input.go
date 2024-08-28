@@ -45,7 +45,7 @@ func write() {
 	// Open the file for writing
 	jrnl, err := os.OpenFile(note, os.O_APPEND|os.O_RDWR|os.O_CREATE, 0700)
 	if err != nil {
-		fmt.Printf("Error opening the file: %v\n", err)
+		fmt.Printf("Error opening the file yoyo: %v\n", err)
 		return
 	}
 
