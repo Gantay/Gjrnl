@@ -64,6 +64,7 @@ func write() {
 	t := now.Format(time.ANSIC)
 	_, err = jrnl.WriteString(t + "\n")
 	if err != nil {
+
 		fmt.Printf("Error writing timeStamp: %v\n", err)
 	}
 
