@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func main() {
 
 	// //create an empty slice to store inputs
@@ -15,8 +13,6 @@ func main() {
 	// // Prompt the user for input
 	//fmt.Println("Enter multiple lines of input (press Ctrl+D when finished):")
 
-	fmt.Println("Cli started")
-	banner()
 	input()
 
 	// //Read user input
