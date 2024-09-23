@@ -41,18 +41,23 @@ func initialModel() model {
 		PaddingBottom(0).
 		PaddingRight(0).
 		PaddingLeft(0).
-		MarginTop(2).
+		MarginTop(1).
 		MarginRight(0).
 		MarginLeft(0).
 		MarginBottom(0).
 		Width(width - 1)
 	fmt.Println(Title.Render("Gjrnl"))
+
 	// lipgloss_END
+
 	ti := textinput.New()
 	ti.Placeholder = "Title"
 	ti.Focus()
 	ti.CharLimit = 156
-	ti.Width = 20
+	ti.Width = 156
+	ti.PromptStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("#7D56F4"))
+	ti.PlaceholderStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("#5d6d7e"))
+	ti.TextStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("#FAFAFA"))
 
 	return model{
 		textInput: ti,
@@ -90,34 +95,36 @@ func (m model) View() string {
 		m.textInput.View(),
 		"(esc to quit)",
 	) + "\n"
+
 }
 
 func CSS() {
 
 	width, height, err := term.GetSize(int(os.Stdout.Fd()))
 	if err != nil {
-		width = 80 // default to 80 if there's an error
+		width = 80  // default to 80 if there's an error
+		height = 40 // default to 40 if there's an error
 	}
-	var Title = lipgloss.NewStyle().
-		Bold(true).
-		Foreground(lipgloss.Color("#FAFAFA")).
-		Background(lipgloss.Color("#7D56F4")).
-		Underline(true).
-		Align(lipgloss.Center).
-		//
+	// var Title = lipgloss.NewStyle().
+	// 	Bold(true).
+	// 	Foreground(lipgloss.Color("#FAFAFA")).
+	// 	Background(lipgloss.Color("#7D56F4")).
+	// 	Underline(true).
+	// 	Align(lipgloss.Center).
+	// 	//
 
-		PaddingTop(0).
-		PaddingBottom(0).
-		PaddingRight(0).
-		PaddingLeft(0).
-		//
-		MarginTop(2).
-		MarginRight(0).
-		MarginLeft(0).
-		MarginBottom(0).
-		Width(width - 1)
+	// 	PaddingTop(0).
+	// 	PaddingBottom(0).
+	// 	PaddingRight(0).
+	// 	PaddingLeft(0).
+	// 	//
+	// 	MarginTop(2).
+	// 	MarginRight(0).
+	// 	MarginLeft(0).
+	// 	MarginBottom(0).
+	// 	Width(width - 1)
 
-	fmt.Println(Title.Render("Gjrnl"))
+	// fmt.Println(Title.Render("Gjrnl"))
 
 	var Borders = lipgloss.NewStyle().
 		Width(width-3).

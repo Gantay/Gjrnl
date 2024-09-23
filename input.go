@@ -2,29 +2,25 @@ package main
 
 import (
 // "bufio"
-// "go/scanner"
+// "fmt"
 // "os"
 )
 
 func input() (userInputs *Intray) {
 
-	//scanner := bufio.NewScanner(os.Stdin)
+	// scanner := bufio.NewScanner(os.Stdin)
 
-	// 	// Create a bufio scanner to read user input.
-	// 	scanner := bufio.NewScanner(os.Stdin)
+	// fmt.Println("Enter multiple lines of input (press Ctrl+D when finished):")
+	// // //Read user input
+	// for scanner.Scan() {
+	// 	intrary := scanner.Text()
+	// 	userInputs.Intrary = append(userInputs.Intrary, intrary)
+	// }
+	// if err := scanner.Err(); err != nil {
+	// 	fmt.Fprintln(os.Stderr, "Error:", err)
+	// 	return
 
-	// 	fmt.Println("Enter multiple lines of input (press Ctrl+D when finished):")
-
-	// 	// //Read user input
-	// 	for scanner.Scan() {
-	// 		intrary := scanner.Text()
-	// 		userInputs.Intrary = append(userInputs.Intrary, intrary)
-	// 	}
-	// 	if err := scanner.Err(); err != nil {
-	// 		fmt.Fprintln(os.Stderr, "Error:", err)
-	// 		return
-
-	// 	}
+	// }
 	// 	fmt.Println(userInputs.format())
 	// 	write()
 	// 	return userInputs
