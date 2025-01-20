@@ -1,19 +1,18 @@
 package main
 
-import ()
+import "fmt"
 
 // Should use interface!!!
 type Intray struct {
-	Title       string
-	Body        string
-	Date        int32
-	Attachments any
+	Title string
+	Body  string
+	Date  string
 }
 
-func (i *Intray) TheTitle() {}
+func (i *Intray) LogUp(s []string) {
 
-func (i *Intray) TheBody() {}
-
-func (i *Intray) TheDate() {}
-
-func (i *Intray) TheAttachments() {}
+	switch {
+	case s[0] == "f":
+		fmt.Println("Titil: %s", s[0])
+	}
+}

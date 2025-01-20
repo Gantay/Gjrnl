@@ -2,16 +2,28 @@ package main
 
 import (
 	"bufio"
-	// "fmt"
+	"fmt"
 	"os"
 )
 
 func input() (userInputs *Intray) {
 
 	scanner := bufio.NewScanner(os.Stdin)
+	toBeSent := []string{}
 
-	// fmt.Println("Enter multiple lines of input (press Ctrl+D when finished):")
+	fmt.Println("Enter multiple lines of input (press Ctrl+D when finished):")
+
+	var bb Intray
+
 	// // //Read user input
+	for scanner.Scan() {
+		line := scanner.Text()
+		toBeSent = append(toBeSent, line)
+
+	}
+
+	bb.LogUp(toBeSent)
+
 	// for scanner.Scan() {
 	// 	intrary := scanner.Text()
 	// 	userInputs.Intrary = append(userInputs.Intrary, intrary)
