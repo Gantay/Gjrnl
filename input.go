@@ -1,14 +1,14 @@
 package main
 
 import (
-// "bufio"
-// "fmt"
-// "os"
+	"bufio"
+	// "fmt"
+	"os"
 )
 
 func input() (userInputs *Intray) {
 
-	// scanner := bufio.NewScanner(os.Stdin)
+	scanner := bufio.NewScanner(os.Stdin)
 
 	// fmt.Println("Enter multiple lines of input (press Ctrl+D when finished):")
 	// // //Read user input
