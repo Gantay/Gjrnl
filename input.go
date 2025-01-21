@@ -30,7 +30,8 @@ func input() {
 		os.Exit(0)
 	}
 
-	bb.TimeStamp()
+	// bb.TimeStamp()
 	bb.InputIntray(toBeSent)
+	bb.WriteIntray()
 
 }
