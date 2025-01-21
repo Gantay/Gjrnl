@@ -1,9 +1,9 @@
 package main
 
 import (
-	"encoding/gob"
 	"fmt"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -35,7 +35,9 @@ func (i *Intray) TimeStamp() {
 	i.Date = dt
 }
 
+// should it return an error?????????
 func (i *Intray) WriteIntray() {
+	fBody := strings.Join(i.Body, "\n")
 	// home, err := os.UserHomeDir()
 	// if err != nil {
 	// 	fmt.Errorf("couldn't get the user's home directory: %v", err)
@@ -44,14 +46,13 @@ func (i *Intray) WriteIntray() {
 	var nameOfJrnl string = "test.txt"
 	jrnl, err := os.OpenFile(nameOfJrnl, os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0770)
 	if err != nil {
-		fmt.Errorf("couldn't write to jrnl.", err)
+		fmt.Errorf("couldn't write to jrnl. %v", err)
 	}
+	defer jrnl.Close()
 
-	//no go
-	encoder := gob.NewEncoder(jrnl)
-	err = encoder.Encode(i)
-	if err != nil {
-		fmt.Print(err)
-	}
+	jrnl.Write([]byte("\n" + i.Title + "\n"))
+	jrnl.Write([]byte("\n" + fBody + "\n"))
+	jrnl.Write([]byte("\n" + i.Date + "\n"))
+	jrnl.Write([]byte("\n" + "\n" + "\n"))
 
 }
