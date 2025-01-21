@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func input() (userInputs *Intray) {
+func input() {
 
 	scanner := bufio.NewScanner(os.Stdin)
 	toBeSent := []string{}
@@ -19,62 +19,18 @@ func input() (userInputs *Intray) {
 	for scanner.Scan() {
 		line := scanner.Text()
 		toBeSent = append(toBeSent, line)
-
+	}
+	// how can i deal with empty spaces????????
+	// me no know
+	if len(toBeSent) == 0 {
+		fmt.Println("no user input.")
+		os.Exit(0)
+	} else if toBeSent[0] == "\t" {
+		fmt.Println("no Title.")
+		os.Exit(0)
 	}
 
-	bb.LogUp(toBeSent)
+	bb.TimeStamp()
+	bb.InputIntray(toBeSent)
 
-	// for scanner.Scan() {
-	// 	intrary := scanner.Text()
-	// 	userInputs.Intrary = append(userInputs.Intrary, intrary)
-	// }
-	// if err := scanner.Err(); err != nil {
-	// 	fmt.Fprintln(os.Stderr, "Error:", err)
-	// 	return
-
-	// }
-	// 	fmt.Println(userInputs.format())
-	// 	write()
-	// 	return userInputs
-	// }
-
-	// func write() {
-	// 	//Read config file
-	// 	conf, err := os.ReadFile("conf.json")
-	// 	if err != nil {
-	// 		fmt.Printf("Error reading config file: %v\n", err)
-	// 	}
-
-	// 	//Converting JSON
-	// 	var data map[string]interface{}
-	// 	json.Unmarshal([]byte(conf), &data)
-	// 	var note = data["name_Gjrnl"].(string)
-
-	// 	// Open the file for writing
-	// 	jrnl, err := os.OpenFile(note, os.O_APPEND|os.O_RDWR|os.O_CREATE, 0700)
-	// 	if err != nil {
-	// 		fmt.Printf("Error opening the file yoyo       : %v\n", err)
-	// 		return
-	// 	}
-
-	// 	// Write the user input to the file
-	// 	for _, k := range input().Intrary {
-
-	// 		_, err = jrnl.WriteString(k + "\n")
-	// 		if err != nil {
-	// 			fmt.Printf("Error writing to the file: %v\n", err)
-	// 			return
-	// 		}
-	// 	}
-
-	// 	// Append time
-	// 	var now = time.Now()
-	// 	t := now.Format(time.ANSIC)
-	// 	_, err = jrnl.WriteString(t + "\n")
-	// 	if err != nil {
-	// 		fmt.Printf("Error writing timeStamp: %v\n", err)
-	// 	}
-
-	// 	defer jrnl.Close()
-	return
 }
