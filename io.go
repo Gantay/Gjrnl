@@ -35,3 +35,22 @@ func input() {
 	bb.WriteIntray()
 
 }
+
+func Output() {
+	var nameOfJrnl string = "test.txt"
+	jrnl, err := os.Open(nameOfJrnl)
+	if err != nil {
+		fmt.Printf("couldn't open to jrnl. %v", err)
+	}
+	defer jrnl.Close()
+
+	search := bufio.NewScanner(jrnl)
+	var lookingFor string
+
+	for search.Scan() {
+		switch {
+		case search.Text() == lookingFor:
+			fmt.Printf("")
+		}
+	}
+}

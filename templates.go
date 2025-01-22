@@ -30,7 +30,7 @@ func (i *Intray) InputIntray(s []string) {
 func (i *Intray) TimeStamp() {
 
 	date := time.Now().Format("2006/01/02")
-	time := time.Now().Format("15:04:05 MST")
+	time := time.Now().UTC().Format("15:04:05 MST")
 	dt := fmt.Sprintf("%s %s", date, time)
 	i.Date = dt
 }
@@ -44,9 +44,9 @@ func (i *Intray) WriteIntray() {
 	// }
 
 	var nameOfJrnl string = "test.txt"
-	jrnl, err := os.OpenFile(nameOfJrnl, os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0770)
+	jrnl, err := os.OpenFile(nameOfJrnl, os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0700)
 	if err != nil {
-		fmt.Errorf("couldn't write to jrnl. %v", err)
+		fmt.Printf("couldn't write to jrnl. %v", err)
 	}
 	defer jrnl.Close()
 

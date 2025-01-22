@@ -1,11 +1,20 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 func main() {
 	fmt.Println("starting...")
-	input()
+	switch {
+	case os.Args[1] == "-r":
+		Output()
+	default:
+		input()
+	}
 
+	//use os.Args to switch between input & output
 	// bb()
 	// CSS()
 
