@@ -8,13 +8,13 @@ import (
 )
 
 // Should use interface!!!
-type Intray struct {
+type Entry struct {
 	Title string
 	Body  []string
 	Date  string
 }
 
-func (i *Intray) InputIntray(s []string) {
+func (i *Entry) InputIntray(s []string) {
 
 	for index, value := range s {
 
@@ -27,7 +27,7 @@ func (i *Intray) InputIntray(s []string) {
 	}
 }
 
-func (i *Intray) TimeStamp() {
+func (i *Entry) TimeStamp() {
 
 	date := time.Now().Format("2006/01/02")
 	time := time.Now().UTC().Format("15:04:05 MST")
@@ -36,13 +36,13 @@ func (i *Intray) TimeStamp() {
 }
 
 // should it return an error?????????
-func (i *Intray) WriteIntray() {
+func (i *Entry) WriteIntray() {
 	fBody := strings.Join(i.Body, "\n")
 	// home, err := os.UserHomeDir()
 	// if err != nil {
 	// 	fmt.Errorf("couldn't get the user's home directory: %v", err)
 	// }
-
+	//Predefined jrnl!!!
 	var nameOfJrnl string = "test.txt"
 	jrnl, err := os.OpenFile(nameOfJrnl, os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0700)
 	if err != nil {
@@ -56,3 +56,5 @@ func (i *Intray) WriteIntray() {
 	jrnl.Write([]byte("\n" + "\n" + "\n"))
 
 }
+
+// Entry entry entry entry entry

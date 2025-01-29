@@ -13,7 +13,7 @@ func input() {
 
 	fmt.Println("Enter multiple lines of input (press Ctrl+D when finished):")
 
-	var bb Intray
+	var bb Entry
 
 	// // //Read user input
 	for scanner.Scan() {
@@ -36,7 +36,9 @@ func input() {
 
 }
 
-func Output() {
+func Curator(lookingFor string) {
+	//Predefined jrnl!!!
+	fmt.Println(lookingFor)
 	var nameOfJrnl string = "test.txt"
 	jrnl, err := os.Open(nameOfJrnl)
 	if err != nil {
@@ -45,12 +47,25 @@ func Output() {
 	defer jrnl.Close()
 
 	search := bufio.NewScanner(jrnl)
-	var lookingFor string
-
+	// var lookingFor string
 	for search.Scan() {
-		switch {
-		case search.Text() == lookingFor:
-			fmt.Printf("")
+		if len(search.Text()) == 0 {
+			continue
+		} else {
+			switch {
+			case search.Text() == lookingFor:
+				fmt.Printf("fount it!!!! [%s].", search.Text())
+			default:
+				fmt.Println(search.Text())
+			}
 		}
+
 	}
 }
+
+// func Pre(lookingFor string) {
+// 	switch {
+// 	case lookingFor == "date", lookingFor == "date":
+// 		return byDate == true
+// 	}
+// }
